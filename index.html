@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+
+<style>
+@font-face {
+    font-family: 'Product Sans';
+    font-style: normal;
+    src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/productsans/v5/HYvgU2fE2nRJvZ5JFAumwegdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
+  }
+*{margin: 0; padding: 0; box-sizing: border-box; font-family: 'Product Sans';}
+.menu{
+    width: 500px;
+    height: 500px;
+    background: rgba(237, 100, 100, 0.5);
+    border-radius: 30px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 5%;
+}
+
+.menu a{
+    text-decoration: none;
+    color: white;
+}
+.menu a:hover{
+    color: rgb(148, 20, 63);
+}
+
+.bg_video{
+	position: fixed; 
+	right: 0; 
+	bottom: 0;
+	min-width: 100%; 
+	min-height: 100%;
+	width: auto; 
+	height: auto; 
+	z-index: -1000;
+	background-size:cover ;
+}
+
+
+
+</style>
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="menu.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Filler</title>
+</head>
+<body>
+        <div class="wrap">
+        <video autoplay loop class="bg_video">
+            <source src="img/bg.mp4" type="video/mp4">
+        </video>
+
+    <div class="menu">
+
+        <h1><a href="home.html">Jogar</a></h1>
+        <h1><a href="filler.html">Sobre o jogo</a></h1>
+        <h1><a href="equipe.html">Desenvolvedor</a></h1>
+
+    </div>
+    </div>
+    
+
+
+    <script src="main.js"></script>
+</body>
+</html>

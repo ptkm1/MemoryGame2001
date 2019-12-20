@@ -1,0 +1,228 @@
+@font-face {
+    font-family: 'Product Sans';
+    font-style: normal;
+    src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/productsans/v5/HYvgU2fE2nRJvZ5JFAumwegdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
+  }
+
+
+*{margin: 0;padding: 0;box-sizing: border-box; font-family: 'product Sans';}
+
+body {
+    height: 100vh; /*pegando toda a tela em (altura) */
+    flex-direction: column;
+    background-image: url(img/background.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: 100%;
+    position: relative;
+   text-align: center;
+  }
+
+
+#containerpai{
+    width: 570px; /* tamanho do conteúdo 620 x 620 */
+    height: 570px;
+    display: flex; /* Deixando o conteudo flexível */
+    flex-wrap: wrap; /* Quebra de linha */
+    align-items: center;
+    padding-top: 10px;
+    margin: 0 auto;
+}
+
+#container{
+    width: 100%; /* tamanho do conteúdo 620 x 620 */
+    height: 100%;
+    margin: 0 auto; /* Alinhando ao centro */
+    display: flex; /* Deixando o conteudo flexível */
+    flex-wrap: wrap; /* Quebra de linha */
+    background-image: linear-gradient(to right, rgb(54, 54, 54) 0%, rgb(201, 47, 47) 100%);
+    align-items: center;
+    
+    border-radius: 10px;
+}
+
+#cartas{
+    width: calc(25% - 10px); /* Largura da carta */
+    height: calc(33.333% - 10px); /* Altura da carta */
+    margin: 5px; /* Margem entre as cartas */
+    position: relative; /* deixando a posição delas relativas */
+    display: flex;
+    flex-flow: row wrap;
+    /* parte das animações */
+    transform: scale(1); /* o scale(1) dá uma expandida na carta em escala de 1 | maior que isso, ficaria estranho, menor que isso também, entao escolhi 1*/
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    transition: transform .5s; /* preciso colocar a transição para aplicar um mini slow na animação de expansão */
+}
+
+
+#cartas:active{ /* cartas apos o clique, a animação é feita aqui */
+    transform: scale(0.87); /* apos clicar, ela encolhe em .2s */
+   transition: transform .2s; 
+}
+
+#cartas.flip{
+    transform: rotateY(180deg); /* Flip é a classe que foi criada la no main.js */
+}
+
+#frentecartas,#fundocartas{ /*frente e verso da carta */
+    width: 100%; /* aplicando a largura em 100% para pegar todo o tamanho da carta  em questão de resolução */
+    height: 100%; /* aplicando a altura em 100% para pegar a altura inteira da carta em questão de resolução */
+    padding: 0px; /* espaçamento entre o svg(imagem) e as cartas */
+    position: absolute; /* se não pôr esse absolute, a face fica em uma altura, e a outra abaixo, não irá sobrepor */
+    border-radius: 10px; /* afina as arestas das cartas */
+    background: #31302d; /* as imagens estão em SVG, portanto o fundo delas é invisível, o que faz com que o bg lilás seja aplicado facilmente por questão de design*/
+    backface-visibility: hidden; /* backface é o fundo da carta, antes de esconter com hidden, ela fica invisível */
+    border: solid #EC1E38 2px;
+}
+#frentecartas{
+    transform: rotateY(180deg); /* animação de rotação em 180 graus ao clicar */
+  }
+
+#fundocartas{
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+}
+
+/* Menú lateral */
+  #menu-lateral {
+    width: 250px;
+    height: 120px;
+    margin-top: 10px;
+    margin-left: -250px;
+    transition: margin-left .7s;
+    border-radius: 0px 10px 10px 0px;
+    background-image: linear-gradient(to left,  #a24b59 0%, #ea6666 100%);
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 9999;
+}
+
+#menu-lateral ul li{
+    list-style-type: none;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0px 10px 10px 0px;
+    width: 250px;
+    height: 40px;
+}
+
+#menu-lateral ul li a{
+    color: white;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+#menu-lateral ul li a:hover{
+    color: white;
+    background-image: linear-gradient(to left, #ea6666 0%, #a24b59 100%);
+    width: 100%;
+    height: 100%;
+    border-radius: 0px 10px 10px 0px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.toggleMenu {
+    margin-left: 0px !important;
+}
+
+
+#linha div {
+    width: 35px;
+    height: 5px;
+    background-color: black;
+    margin: 6px 0;
+  }
+
+#btn-menu{
+    text-decoration: none;
+    color: white;
+}
+
+#logo{
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+button{
+    background: none;
+    border: solid white 1px;
+    border-radius: 100%;
+    color: white;
+    width: 30px;
+    height: 30px;
+}
+button:focus{
+    outline: none;
+}
+button:hover{
+    cursor: pointer;
+    background: #8b2f34;
+    border: #8b2f2f solid;
+}
+
+.titulo{
+    text-align: center;
+    color: white;  
+}
+/* Modal */
+#gameover{
+    position: absolute;
+    top: 0;
+    width:100%;
+    height: 100%;
+    background-color: rgba(201, 47, 47, 0.397);
+    z-index: -2;
+    cursor: pointer;
+}
+
+#imgfimgame{
+    margin-top: 200px;
+}
+
+#wingame{
+    position: absolute;
+    top: 0;
+    width:100%;
+    height: 100vh;
+    background-color: rgba(74, 33, 33, 0.5);
+    z-index: -2;
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 768px){
+    #containerpai{
+        width: 100%; 
+        margin-top: 20px;
+    }
+    #btn-menu img{
+        opacity: 0.3;
+    }
+    #menu-lateral{
+        margin-top: -20px;
+        opacity: 0.8;
+    }
+    
+
+}
